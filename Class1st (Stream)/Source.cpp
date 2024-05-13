@@ -60,6 +60,10 @@ int main()
 #pragma region 참조자
 
 	// int health = 100;
+	//
+	// int& reference = health; 
+	//
+	// std::cout << reference;   // 출력 100 
 	// 
 	// int & reference = health; // health / reference 이라는 두 이름을 가진 4byte 메모리 공간 
 	// 
@@ -72,6 +76,8 @@ int main()
 	// Recovery(health);
 	// 
 	// std::cout << "health의 값 : " << health << std::endl;
+
+	
 
 #pragma endregion
 
