@@ -8,17 +8,17 @@ private:
 	int* price;
 
 public:
-	Item()
+	Item() // 생성자
 	{
 		price = new int;
 	}
 
-	Item(const Item& clone)
+	Item(const Item& clone)  // 복사 생성자 	
 	{
 		price = clone.price;
 
 	}
-	~Item()
+	~Item() // 소멸자
 	{
 		delete price;
 
