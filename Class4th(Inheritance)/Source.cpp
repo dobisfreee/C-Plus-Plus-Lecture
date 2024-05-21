@@ -34,11 +34,13 @@ public:
 	Object()
 	{
 		data = new int;
+		cout << data << endl;
 	}
 
 	Object(const Object& object)
 	{
 		data = new int;
+		cout << data << endl;
 	}
 	~Object()
 	{
@@ -95,14 +97,46 @@ public:
 	}
 
 };
+class Tree
+{
+private:
+	int * health;
+	
+
+public:
+	Tree()
+	{
+		health = new int; 
+		*health = 50;
+		cout << "health의 값 : " << *health << endl;
+	}
+	Tree(const Tree & clone)
+	{
+		health = clone.health;  // int *ptr 2 = ptr1;
+		cout << "health의 값 : " << *health << endl;
+	}
+	
+
+};
 
 
 
 int main()
 {
+	
+	//	Tree tree1;
+	//	
+	//	Tree tree2(tree1);
+
+	
+	
+
+
 #pragma region 얕은 복사
 	// 객체를 복사할 때 주소 값을 복사하여 같은 메모리 공간을 가리키게 하는 복사입니다.
 
+	
+	
 	// int* ptr1 = new int;
 	// 
 	// int* ptr2 = ptr1;
