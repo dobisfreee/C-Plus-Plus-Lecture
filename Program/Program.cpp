@@ -2,155 +2,103 @@
 
 using namespace std;
 
-#pragma region 함수의 오버로딩
-// 같은 이름의 함수를 (매개 변수의 자료형)과 (매개변수의 수)로 구분하여
-// 여러 개를 선언할 수 있는 기능입니다. 
-
-void Calculator(char x, char y)
+class Vector2
 {
-	cout << "(char)x + (char)y = " << (char)(x + y) << endl;
+private:
+	int x;
+	int y;
+
+public:
+	Vector2(int x, int y)
+	{
+		this->x = x;
+		this->y = y;
+	}
+
+
+	Vector2 & operator + (const Vector2 & clone)
+	{
+		Vector2 object(x + clone.x, y + clone.y);
+
+		return object;
+		
+	}
+	Vector2& operator --()
+	{
+		this->x -= 1;
+		this->y -= 1;
+		return * this;
+	}
+	Vector2& operator --(int)
+	{
+		Vector2 clone(this->x,this->y);
+		this->x -= 1;
+		this->y -= 1;
+		return clone;
+		
+	}
+	Vector2 operator *(int value)
+	{
+		return Vector2(this->x * value, this->y * value);
+	}
+	int & X()
+	{
+		return x;
+	}
+
+	int & Y()
+	{
+		return y;
+	}
+
+};
+
+Vector2 operator *(int value, Vector2 & clone)
+{
+	return value * clone;
 }
-
-void Calculator(int x, int y)
-{
-	cout << "(int)x + (int)y = " << x + y << endl;
-}
-
-void Calculator(float x, float y, float z)
-{
-	cout << "(float)x + (float)y + (float)z = " << x + y + z << endl;
-}
-// 함수의 오버로딩의 경우 함수의 매개 변수에 전달하는 (인수)의 형태를 보고
-// 호출하므로, 반환형으로 함수의 오버로딩을 생성할 수 없습니다. 
-#pragma endregion
-
-#pragma region 함수의 오버라이딩
-// 상위 클래스에 있는 함수를 하위 클래스에서 재정의하여 사용하는 기능입니다.
-
-class Unit
-{
-protected :
-	int health;
-
-public:
-	void Move()
-	{
-		cout << "Unit Move" << endl;
-	}
-};
-
-class Marine : public Unit
-{
-public:
-	void Move()
-	{
-		cout << "Marine Move" << endl;
-	}
-};
-
-class Firebet : public Unit
-{
-public: 
-	void Move()
-	{
-		cout << "Firebet Move" << endl;
-	}
-};
-
-// 함수의 오버라이드는 상속 관계에서만 이루어지며, 
-// 하위 클래스에서 함수를 재정의할 때 상위 클래스의 함수 형태와 일치해야 합니다. 
-#pragma endregion
-
-#pragma region 가상 함수
-
-
-class Mechanic
-{
-protected:
-	int health;
-	int attack;
-	int defense;
-
-public:
-	void Move()
-	{
-		cout << "Mechanic Move" << endl;
-	}
-};
-
-class SigueTank : public Mechanic
-{
-public:
-	SigueTank()
-	{
-		cout << "Create SigueTank" << endl;
-
-		health = 150;
-		attack = 30;
-		defense = 1;
-	}
-
-	virtual void Move()
-	{
-		cout << "SigueTank Move" << endl;
-	}
-
-	~SigueTank()
-	{
-		cout << "Release SigueTank" << endl;
-	}
-
-};
-#pragma endregion
-
-
 int main()
 {
-
-#pragma region 다형성
-	// 여러 개의 서로 다른 객체가 동일한 기능을 서로 다른 방법으로 
-	// 처리할 수 있는 작업입니다. 
-
-#pragma region 함수의 오버로딩
-	//	Calculator('A', 'B');
-	//	Calculator(10, 20);
-	//	Calculator(57.5f, 82.5f, 15.0f);
-#pragma endregion
-
-#pragma region 함수의 오버라이딩
+#pragma region 연산자 오버로딩
 	
-	// Unit unit;
-	// unit.Move();
+	// Vector2 vector1(10, 10);
+	// Vector2 vector2(5, 5);
 	// 
-	// Marine marine;
-	// marine.Move();
-
-	//  Unit * createPtr = new Firebet; 
-	//  
-	//  createPtr -> Move(); // Unit Move 출력
-
-
+	// 
+	// Vector2 Vector3 = vector1 + vector2;
+	// 
+	// cout << "Vector3의 x 값 : " << vector3.X();
+	// cout << "Vector3의 y 값 : " << vector3.Y();
+	// 
+	// Vector2 vector4(10, 10);
+	// --vector4;
+	// 
+	// cout << " vector4의 X 값 : " << vector4.X() << endl;
+	// cout << " vector4의 Y 값 : " << vector4.Y() << endl;
+	// 
+	// Vector2 vector5 = vector4--;
+	// 
+	// 
+	// cout << " vector5의 X 값 : " << vector5.X() << endl;
+	// cout << " vector5의 Y 값 : " << vector5.Y() << endl;
+	// 
+	// cout << " vector4의 X 값 : " << vector4.X() << endl;
+	// cout << " vector4의 Y 값 : " << vector4.Y() << endl;
 #pragma endregion
 
-#pragma region 가상 함수
-	// 상속하는 클래스 내에서 같은 형태의 함수로 재정의
-	// 될 수 있는 함수입니다. 
+#pragma region 연산자 오버로딩의 교환 법칙
+	// 피연산자의 위치는 연산의 결과에 아무런 영향을 미치지 않는 법칙입니다. 
 
-	Mechanic * mechanicPtr = new SigueTank;
+	Vector2 position1(2, 5);
 
-	mechanicPtr->Move();	
+	Vector2 position2 = position1 * 2;
 
-	// 가상 함수 실행 시간에 상위 클래스에 대한 참조로
-	// 하위 클래스에 재정의된 함수를 호출할 수 있으며, 
-	// 접근 지정자는 공개로 설정해야 합니다. 
+	cout << "position2의 X 값 : " << position2.X() << endl;
+	cout << "position2의 Y 값 : " << position2.Y() << endl;
 #pragma endregion
 
 
 
-	// 다형성은 컴파일 시점에 함수와 속성이 결정되는 정적 바인딩을 하지 않고,
-	// 실행 시간에 함수와 속성이 결정될 수 있는 동적 바인딩을 가능하게 합니다. 
-#pragma endregion
-
-	
 	return 0;
+
 }
