@@ -1,12 +1,13 @@
 #pragma once
 #include <iostream>
 
-using namespace std;
+using namespace std; 
 
 class Keyboard
 {
 public: 
-	void Conncect();
+	void Connect();
+
 	void Input();
 };
 

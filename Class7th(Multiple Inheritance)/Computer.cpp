@@ -3,9 +3,8 @@
 void Computer::Use()
 {
 	Mouse::Connect();
-	Keyboard::Conncect();
+	Keyboard::Connect();
 
 	Select();
 	Input();
-
 }

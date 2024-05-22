@@ -11,9 +11,21 @@ protected:
     int maxHP;
     
 public:
+    Terran()
+    {
+        cout << "Terran Move" << endl;
+        
+    }
+
+
     virtual void Recovery() = 0;
-   
+
     virtual void Damage(int damage) = 0;
+
+    virtual ~Terran()
+    {
+        cout << "Release Terran" << endl; 
+    }
    
 };
 
@@ -36,6 +48,10 @@ public:
         health -= damage;
         cout << "Marine Damage" << endl;
     }
+    ~Marine()
+    {
+        cout << "Release Marine" << endl;
+    }
 
 };
 class Firebet : public Terran
@@ -57,6 +73,10 @@ public:
         health -= damage;
         cout << "Marine Damage" << endl;
     }
+    ~Firebet()
+    {
+        cout << "Release Firebet" << endl;
+    }
 };
 class Ghost : public Terran
 {
@@ -77,6 +97,10 @@ public:
         health -= damage;
         cout << "Marine Damage" << endl;
     }
+   virtual ~Ghost()
+    {
+        cout << "Release Ghost" << endl;
+    }
 };
 
 void Beacon(Terran* terran)
@@ -90,6 +114,8 @@ int main()
     // 크기가 작은 상위 클래스에 상위 클래스보다 더 큰 
     // 하위 클래스를 대입하여 넣을 경우 클래스의 내용이
     // 잘리는 현상입니다. 
+
+
     
     
 

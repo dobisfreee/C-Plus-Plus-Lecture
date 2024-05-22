@@ -1,11 +1,11 @@
 #include "Keyboard.h"
 
-void Keyboard::Conncect()
+void Keyboard::Connect()
 {
-	cout << "Keyboard Connect" << endl;
+	cout << "Connect Keyboard " << endl;
 }
 
 void Keyboard::Input()
 {
-	cout << " Keyboard Input" << endl; 
+	cout << "Input Keyboard" << endl; 
 }
