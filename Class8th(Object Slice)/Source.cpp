@@ -36,7 +36,7 @@ public:
     {
         cout << "Marine Move" << endl;
         health = 40;
-        maxHP = 40; 
+        maxHP = health; 
     }
     virtual void Recovery() override
     {
@@ -61,7 +61,7 @@ public:
     {
         cout << "Firebet Move" << endl;
         health = 50;
-        maxHP = 50;
+        maxHP = health;
     }
     virtual void Recovery() override
     {
@@ -85,7 +85,7 @@ public:
     {
         cout << "Ghost Move" << endl;
         health = 45;
-        maxHP = 45;
+        maxHP = health;
     }
     virtual void Recovery() override
     {
@@ -103,9 +103,9 @@ public:
     }
 };
 
-void Beacon(Terran* terran)
+void Beacon(Terran & terran)
 {
-    terran->Recovery();
+    terran.Recovery();
 }
 
 int main()
@@ -114,6 +114,8 @@ int main()
     // 크기가 작은 상위 클래스에 상위 클래스보다 더 큰 
     // 하위 클래스를 대입하여 넣을 경우 클래스의 내용이
     // 잘리는 현상입니다. 
+   // Ghost ghost;
+   // Beacon(ghost);
 
 
     
