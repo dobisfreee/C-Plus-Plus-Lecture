@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void Position(int x, int y = 20, int z = 30)
+void Position(int x= 10 , int y = 20, int z = 30)
 {
 	cout << "x의 값 : " << x << endl;
 	cout << "y의 값 : " << y << endl;
@@ -41,10 +41,13 @@ public:
 int main()
 {
 #pragma region 기본 매개 변수
+
 	// 함수를 선언할 때 매개 변수를 선언과 동시에 초기화해 놓으며, 
 	// 함수를 호출할 때 매개 변수를 지정하지 않아도 기본값으로 설정됩니다.
 
+	// Position();
 	// Position(10);
+
 #pragma endregion
 
 #pragma region friend 
