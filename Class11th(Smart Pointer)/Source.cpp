@@ -77,6 +77,8 @@ int main()
 
 	// cout << "uniquePtr1의 data 값 : " << uniquePtr1->data << endl; // 자동으로 uniquePtr1은 NULLPTR을 가리킴
 	// cout << "uniquePtr2의 data 값 : " << uniquePtr2->data << endl;
+
+	// unique_ptr<Data> uniquePtr1 = make_unique<Data>();
 #pragma endregion
 
 #pragma region Shared 포인터
@@ -86,6 +88,7 @@ int main()
 	// 자원 객체를 해제하도록 설계되어 있는 포인터입니다. 
 
 	// 참조 개수 : 자원 객체를 가리키는 포인터 객체의 수를 의미합니다. 
+	// shared_ptr<Champion> sharedPtr1(new Champion());
 	// 	shared_ptr<Champion> sharedPtr1 = make_shared<Champion>();
 	// 
 	// 	cout << "shared Pointer의 참조 개수 : " << sharedPtr1.use_count() << endl;

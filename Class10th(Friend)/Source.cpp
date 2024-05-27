@@ -68,6 +68,8 @@ int main()
 #pragma region 단일 책임 원칙(Single Responsibility Principle)
 
 	// 객체는 단 하나의 책임만 가져야하는 원칙입니다. 
+
+	
 #pragma endregion
 
 #pragma region 개방 폐쇄 원칙
