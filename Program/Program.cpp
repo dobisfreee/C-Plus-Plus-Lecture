@@ -1,156 +1,134 @@
 ﻿#include <iostream>
+#include <vector>
+#include <time.h>
+#include <conio.h>
+#include <windows.h>
+
+#define UP 72
+#define DOWN 80
+#define LEFT 75
+#define RIGHT 77
+
 
 using namespace std;
 
-#pragma region 함수의 오버로딩
-// 같은 이름의 함수를 (매개 변수의 자료형)과 (매개변수의 수)로 구분하여
-// 여러 개를 선언할 수 있는 기능입니다. 
-
-void Calculator(char x, char y)
-{
-	cout << "(char)x + (char)y = " << (char)(x + y) << endl;
-}
-
-void Calculator(int x, int y)
-{
-	cout << "(int)x + (int)y = " << x + y << endl;
-}
-
-void Calculator(float x, float y, float z)
-{
-	cout << "(float)x + (float)y + (float)z = " << x + y + z << endl;
-}
-// 함수의 오버로딩의 경우 함수의 매개 변수에 전달하는 (인수)의 형태를 보고
-// 호출하므로, 반환형으로 함수의 오버로딩을 생성할 수 없습니다. 
-#pragma endregion
-
-#pragma region 함수의 오버라이딩
-// 상위 클래스에 있는 함수를 하위 클래스에서 재정의하여 사용하는 기능입니다.
-
-class Unit
-{
-protected :
-	int health;
-
-public:
-	void Move()
-	{
-		cout << "Unit Move" << endl;
-	}
-};
-
-class Marine : public Unit
-{
-public:
-	void Move()
-	{
-		cout << "Marine Move" << endl;
-	}
-};
-
-class Firebet : public Unit
-{
-public: 
-	void Move()
-	{
-		cout << "Firebet Move" << endl;
-	}
-};
-
-// 함수의 오버라이드는 상속 관계에서만 이루어지며, 
-// 하위 클래스에서 함수를 재정의할 때 상위 클래스의 함수 형태와 일치해야 합니다. 
-#pragma endregion
-
-#pragma region 가상 함수
-
-
-class Mechanic
-{
-protected:
-	int health;
-	int attack;
-	int defense;
-
-public:
-	void Move()
-	{
-		cout << "Mechanic Move" << endl;
-	}
-};
-
-class SigueTank : public Mechanic
-{
-public:
-	SigueTank()
-	{
-		cout << "Create SigueTank" << endl;
-
-		health = 150;
-		attack = 30;
-		defense = 1;
-	}
-
-	virtual void Move()
-	{
-		cout << "SigueTank Move" << endl;
-	}
-
-	~SigueTank()
-	{
-		cout << "Release SigueTank" << endl;
-	}
-
-};
-#pragma endregion
-
-
 int main()
 {
+#pragma region 기본 템플릿 라이브러리
 
-#pragma region 다형성
-	// 여러 개의 서로 다른 객체가 동일한 기능을 서로 다른 방법으로 
-	// 처리할 수 있는 작업입니다. 
-
-#pragma region 함수의 오버로딩
-	//	Calculator('A', 'B');
-	//	Calculator(10, 20);
-	//	Calculator(57.5f, 82.5f, 15.0f);
-#pragma endregion
-
-#pragma region 함수의 오버라이딩
+#pragma region 선형 컨테이너
 	
-	// Unit unit;
-	// unit.Move();
+	// 데이터를 선형으로 저장하며, 특별한 제약이나 규칙이 없는 일반적인 컨테이너입니다. 
+
+	
+#pragma region Vector
+	// std::vector<int> vector;
 	// 
-	// Marine marine;
-	// marine.Move();
-
-	//  Unit * createPtr = new Firebet; 
-	//  
-	//  createPtr -> Move(); // Unit Move 출력
-
+	//  vector.reserve(6);
+	// 
+	//  cout << "vector의 capacity 값 : " << vector.capacity() << endl;
+	// 
+	// vector.push_back(10); // [10]
+	// vector.push_back(20); // [10][20]
+	// vector.push_back(30); // [10][20][30]
+	// vector.push_back(40); // [10][20][30][40]
+	// 
+	// vector.pop_back();  // [10][20][30]
+	// 
+	// vector.clear(); 
+	// 
+	// for (int i = 0; i < vector.size(); i++)
+	// {
+	// 	cout << "vector["<<i<<"]의 값 : " << vector[i] << endl;
+	// }
 
 #pragma endregion
 
-#pragma region 가상 함수
-	// 상속하는 클래스 내에서 같은 형태의 함수로 재정의
-	// 될 수 있는 함수입니다. 
+#pragma region Rhythm Game
+	vector<const char *> RhythmGame;
 
-	Mechanic * mechanicPtr = new SigueTank;
+	RhythmGame.reserve(6);
 
-	mechanicPtr->Move();	
-
-	// 가상 함수 실행 시간에 상위 클래스에 대한 참조로
-	// 하위 클래스에 재정의된 함수를 호출할 수 있으며, 
-	// 접근 지정자는 공개로 설정해야 합니다. 
-#pragma endregion
-
-
-
-	// 다형성은 컴파일 시점에 함수와 속성이 결정되는 정적 바인딩을 하지 않고,
-	// 실행 시간에 함수와 속성이 결정될 수 있는 동적 바인딩을 가능하게 합니다. 
-#pragma endregion
+	srand(time(NULL));
 
 	
+
+	int count = 4;
+	
+	for (int i = 0; i < count; i++)
+	{
+		int direction = rand() % 4;
+
+		switch (direction)
+		{
+		case 0:
+			RhythmGame.push_back("↑");
+			break;
+		case 1:
+			RhythmGame.push_back("←");
+			break;
+		case 2:
+			RhythmGame.push_back("→");
+			break;
+		case 3:
+			RhythmGame.push_back("↓");
+			break;
+		}
+	}
+
+	for (const char * & element : RhythmGame)
+	{
+		cout << element << " ";
+	}
+	int health = 3;
+	int key;
+	const char* input = NULL;
+	while (health > 0 )
+	{
+		if (_kbhit)
+		{
+			key = _getch();
+		
+			switch (key)
+			{
+			case 72:
+				input = "↑";
+				break;
+			case 80:
+				input = "↓";
+				break;
+			case 75:
+				input = "←";
+				break;
+			case 77:
+				input = "→";
+				break;
+
+			}
+		}
+		if (input == RhythmGame.back())
+		{
+			RhythmGame.pop_back();
+		}
+		else
+		{
+			health--;
+		}
+
+		
+	}
+
+
+	
+
+#pragma endregion
+
+
+#pragma endregion
+
+
+#pragma endregion
+
+
 	return 0;
 }

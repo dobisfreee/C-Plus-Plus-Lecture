@@ -55,7 +55,7 @@ private:
 	int velocity;
 
 public:
-	Bullet(int x, int y, int velocity)
+	Bullet(int x, int y, int velocity)  // bullet 생성자
 	{
 		// this 포인터 
 		// 자기 자신을 가리키는 포인터입니다. 
@@ -65,7 +65,7 @@ public:
 		this->velocity = velocity;
 	}
 
-	Bullet(const Bullet& clone)
+	Bullet(const Bullet& clone)  // 복사 생성자
 	{
 		cout << "Copy Constructor" << endl;
 		x = clone.x;
@@ -104,13 +104,13 @@ int main()
 
 	// 같은 객체를 복사하여 생성시킬 때 호출되는 생성자입니다. 
 
-	Bullet bullet1(1, 1, 5);
-
-	bullet1.Information();
-
-	Bullet bullet2(bullet1);
-
-
+	//	Bullet bullet1(1, 1, 5); // 일반생성자에 의해 생성 
+	//	
+	//	bullet1.Information();
+	//	
+	//	Bullet bullet2(bullet1);  // 복사생성자에 의해 생성 
+	
+	
 	// 복사 생성자를 정의하지 않고, 객체를 복사하게 되면 기본 복사 생성자가
 	// 호출되기 때문에 얕은 복사로 객체가 복사됩니다. 
 

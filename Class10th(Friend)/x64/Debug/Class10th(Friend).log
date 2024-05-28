@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\USER\Desktop\C-Plus-Plus-Lecture\Class10th(Friend)\Source.cpp(79,36): error C2248: 'Unit::health': protected 멤버('Unit' 클래스에서 선언)에 액세스할 수 없습니다.
+C:\Users\USER\Desktop\C-Plus-Plus-Lecture\Class10th(Friend)\Source.cpp(43,6): message : 'Unit::health' 선언을 참조하십시오.
+C:\Users\USER\Desktop\C-Plus-Plus-Lecture\Class10th(Friend)\Source.cpp(40,7): message : 'Unit' 선언을 참조하십시오.
