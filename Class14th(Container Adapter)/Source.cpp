@@ -29,8 +29,8 @@ int main()
 	// {
 	// 	cout << "Stack의 값 : " << stack.top() << endl;
 	// 	stack.pop();
-	// 	
 	// }
+
 #pragma endregion
 
 #pragma region Queue
@@ -51,11 +51,11 @@ int main()
 	// 
 	// int size = queue.size();
 	// 
-	// for (int i = 0; i < size; i++)
-	// {
-	// 	cout << queue.front() << " ";
-	// 	queue.pop();
-	// }
+	 // for (int i = 0; i < size; i++)
+	 // {
+	 // 	cout << queue.front() << " ";
+	 // 	queue.pop();
+	 // }
 
 #pragma endregion
 
