@@ -1,112 +1,197 @@
 ﻿#include <iostream>
+#include <conio.h>
+#include <windows.h>
 
 using namespace std;
+
+#define UP    72
+#define LEFT  75
+#define RIGHT 77
+#define DOWN  80
+
+void Position(int x, int y)
+{
+    COORD position = { x,y };
+
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), position);
+}
 
 class Item
 {
 private:
-	int price;
+    int price;
+    const char* name;
 
 public:
-	Item(int && price)
-	{	
-		cout << "Constructor" << endl;
-		this->price = price;
-	}
-	Item(Item & item)
-	{	
-		cout << "Copy Constructor" << endl; 
-		price = item.price;
-	}
+    void SetData(int price, const char* name)
+    {
+        this->price = price;
+        this->name = name;
+    }
 };
 
-class Card
-{
-public: 
-	virtual void Skill() = 0;
-	virtual void Show() = 0;
-	virtual void Effect() = 0;
-	
-};
 
-class Legend : Card
+class Input
 {
+private:
+    int x;
+    int y;
+    char key;
+    const char* shape;
 public:
-	void Show() override
-	{
-		cout << "Legend Card" << endl;
-	}
+    Input()
+    {
+        x = 0;
+        y = 1;
+        shape = "△";
+    }
 
-	void Skill() override
-	{
-		cout <<  "Legend Skill" << endl;
-	}
+    void Renderer()
+    {
+        Position(x, y);
 
-	void Effect() final
-	{
-		cout << "Legend Effect" << endl;
-	}
-	
+        cout << shape;
+    }
+
+    void GetKey(int& index)
+    {
+        key = _getch();
+
+        if (key == -32)
+        {
+            key = _getch();
+
+            switch (key)
+            {
+            case UP:
+                if (y > 1)
+                {
+                    y -= 2;
+                    index -= 8;
+                }
+                break;
+            case LEFT:
+                if (x > 0)
+                {
+                    x -= 2;
+                    index -= 2;
+                }
+                break;
+            case RIGHT:
+                if (x < 6)
+                {
+                    x += 2;
+                    index += 2;
+                }
+                break;
+            case DOWN:
+                if (y < 5)
+                {
+                    y += 2;
+                    index += 8;
+                }
+                break;
+            }
+        }
+
+    }
+
+    void Select(Item* item[], int& index)
+    {
+        if (GetAsyncKeyState(VK_SPACE))
+        {
+            if (item[index / 2] == nullptr)
+            {
+                item[index / 2] = new Item();
+            }
+            else
+            {
+                item[index / 2] = nullptr;
+            }
+        }
+    }
+
+    
 };
 
-class Unique : Legend
+
+class Inventory
 {
+private:
+    int size;
+    int width;
+    int index;
+
+    Input input;
+    Item* item[12];
 public:
+    Inventory(int size, int width)
+    {
+        index = 0;
+        this->size = size;
+        this->width = width;
 
-	Unique()
-	{
-		
-	}
+        for (int i = 0; i < size; i++)
+        {
+            item[i] = nullptr;
+        }
+    }
 
-	// void Effect() override { cout << " Unique Effect" << endl; }
+    void Update()
+    {
+        input.GetKey(index);
+        input.Select(item, index);
+    }
+
+    void Renderer()
+    {
+        Position(0, 0);
+
+        for (int i = 0; i < size; i++)
+        {
+            if (i != 0 && i % width == 0)
+            {
+                cout << endl << endl;
+            }
+
+            if (item[i] == nullptr)
+            {
+                cout << "□";
+            }
+            else
+            {
+                cout << "■";
+            }
+        }
+
+    
+        input.Renderer();
+    }
+   
+    ~Inventory()
+    {
+        for (int i = 0; i < 12; i++)
+        {
+            if (item[i] != nullptr)
+            {
+                delete item[i];
+            }
+        }
+    }
 };
-
 
 int main()
 {
-#pragma region  R Value & L Value
+    Inventory inventory(12, 4);
 
-	// L value Type
-	// int data = 10;
-	// 
-	// int& left1 = data;
-	// int& left2 = 20;
+    while (true)
+    {
+        inventory.Renderer();
 
-	// R value Type
-	// int count = 0;
-	// int&& right1 = 10;
-    // int&& right2 = count;
-	// right1 = 30; 
-	// 
-	// cout << "right1의 값 : " << right1 << endl;
+        inventory.Update();
 
+        system("cls");
+    }
 
-
-#pragma endregion
-
-#pragma region 복사 생략(Copy Elision)
-	// 함수의 반환 값을 모두 사용하거나 초기화하는 경우에 생기는 불필요한 임시 객체를 
-	// 최적화하거나 제거하는데 사용되는 컴파일러 기술입니다. 
-
-// Item item1(10000);
-// 
-// Item item2(item1);
-// 
-// Item item3(Item()); // 일반 생성자 호출
-
-
-#pragma endregion
-
-#pragma region final
-
-
-
-#pragma endregion
-
-
-
-
-
-
-	return 0; 
+    return 0;
 }

@@ -43,16 +43,18 @@ int main()
 	// 데이터를 선형으로 저장하며, 특별한 제약이나 규칙이 없는 일반적인 컨테이너입니다. 
 
 #pragma region Vector
-	// std::vector<int> vector;
+	std::vector<int> vector;
 	// 
 	// vector.reserve(6);
 	// 
 	// cout << "vector의 capacity 값 : " << vector.capacity() << endl;
 
-	// vector.push_back(10); // [10]
-	// vector.push_back(20); // [10][20]
-	// vector.push_back(30); // [10][20][30]
-	// vector.push_back(40); // [10][20][30][40]
+	vector.push_back(10); // [10]
+	vector.push_back(20); // [10][20]
+	vector.push_back(30); // [10][20][30]
+	vector.push_back(40); // [10][20][30][40]
+
+	vector.
 	// 
 	// 
 	// vector.clear();

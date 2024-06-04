@@ -25,6 +25,7 @@ int main()
 	// setContainer.insert(45);
 	// setContainer.insert(45);
 	// 
+	//
 	// for (iterator = setContainer.begin(); iterator != setContainer.end(); iterator++)
 	// {
 	// 	cout << *iterator << endl; 
@@ -46,20 +47,26 @@ int main()
 	// 
 	// if (mapContainer.find("Sword") != mapContainer.end())
 	// {
-	// 	cout << "Find" << endl;
+	// 	cout << "Found" << endl;
 	// }
 	// else
 	// {
-	// 	cout << "Not Find" << endl;
+	// 	cout << "Not Found" << endl;
 	// }
-	// 
-	// mapContainer.erase("Sword");
-	// 
-	// for (map<string, int> ::iterator iter = mapContainer.begin(); iter != mapContainer.end(); iter++)
+	 // 
+	 // mapContainer.erase("Sword");
+	 // 
+	// map<string, int>::iterator iter = mapContainer.begin();
+	//
+	// for (iter = mapContainer.begin(); iter != mapContainer.end(); iter++)
 	// {
-	// 	cout << "KEY : " << iter->first << endl;
-	// 	cout << "VALUE : " << iter->second << endl;
+	// 	cout << "KEY : " << iter->first << endl;  // first : key 값
+	// 	cout << "VALUE : " << iter->second << endl; // second: value 값 
 	// }
+
+
+
+
 #pragma endregion
 
 
